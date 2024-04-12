@@ -17,8 +17,12 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Prepare
+        run: touch results.sarif.json
+
       - name: Annotate
         # You may pin to the exact commit or the version.
         uses: JetBrains/ReSharper-InspectCode@v0.3
         with:
+          output: results.sarif.json
           solution: ./VContainerHandsOn.sln
